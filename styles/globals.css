@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .infoText {
+    @apply p-4 bg-pink-200 rounded-lg max-w-[300px];
+  }
+}
