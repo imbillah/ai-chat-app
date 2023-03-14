@@ -6,9 +6,9 @@ import {
 } from "@heroicons/react/24/outline";
 const Info = () => {
   return (
-    <div className="h-screen p-2">
+    <div className="p-2">
       <h1 className="text-center mb-5 py-5 font-bold text-4xl">Ai Chat 2.0</h1>
-      <div className="flex text-center space-x-4">
+      <div className="md:flex text-center md:space-x-4 md:h-screen">
         <div>
           <div className="flex flex-col justify-center items-center mb-4">
             <SunIcon className="h-8 w-8" />
