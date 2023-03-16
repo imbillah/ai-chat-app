@@ -3,7 +3,7 @@ import { PowerIcon } from "@heroicons/react/24/outline";
 import { collection, orderBy, query } from "firebase/firestore";
 import { signOut, useSession } from "next-auth/react";
 import { useCollection } from "react-firebase-hooks/firestore";
-import { db } from "../../firebase";
+import { db } from "../../firebase/firebase";
 import ChatRows from "./chatRows/ChatRows";
 import NewChat from "./newChat/NewChat";
 
