@@ -19,12 +19,12 @@ export default async function RootLayout({
   const session = await getServerSession(authOptions);
   return (
     <html lang="en">
-      <body className="bg-gradient-to-r from-purple-500 to-pink-500 h-screen">
+      <body className="bg-[#FAFAFA] h-screen">
         {!session ? (
           <Login />
         ) : (
           <SessionProvider session={session}>
-            <div className="flex ">
+            <div className="flex">
               <div className="overflow-y-auto w-[120px] md:min-w-[300px]">
                 <Sidebar />
               </div>

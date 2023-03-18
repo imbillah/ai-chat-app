@@ -29,13 +29,13 @@ const NewChat = () => {
   return (
     <div>
       <Link href="/">
-        <HomeIcon className="h-12 mb-4 customBg text-white w-12 p-1 mx-auto border rounded-full hover:bg-pink-200" />
+        <HomeIcon className="h-12 mb-4 w-12 p-1 mx-auto border rounded-full customBg" />
       </Link>
       <div
         onClick={createNewChat}
-        className="lg:flex flex-col items-center space-x-1 px-8 rounded-md cursor-pointer py-3 hover:bg-pink-100 transition-all duration-200 ease-out customBg"
+        className="md:flex items-center space-x-1 px-2 rounded-md cursor-pointer py-3 customBg"
       >
-        <PlusIcon className="h-4 w-4" />
+        <PlusIcon className="h-4 w-4 hidden md:block" />
         <p>New Chat</p>
       </div>
     </div>

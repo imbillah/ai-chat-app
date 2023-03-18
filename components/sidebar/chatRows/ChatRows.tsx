@@ -1,5 +1,8 @@
 "use client";
-import { ChatBubbleLeftIcon, TrashIcon } from "@heroicons/react/24/outline";
+import {
+  ChatBubbleOvalLeftEllipsisIcon,
+  TrashIcon,
+} from "@heroicons/react/24/outline";
 import { collection, deleteDoc, doc, orderBy, query } from "firebase/firestore";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
@@ -26,19 +29,28 @@ const ChatRows = ({ id }: Props) => {
   }, [path]);
 
   const deleteChat = async () => {
-    await deleteDoc(doc(db, "users", session?.user?.email!, "chats", id));
-    router.replace("/");
+    if (window.confirm("Are you sure you want to delete this chat?")) {
+      await deleteDoc(doc(db, "users", session?.user?.email!, "chats", id));
+      router.replace("/");
+    }
   };
+  const chatTitle = messages?.docs[messages?.docs.length - 1]
+    ?.data()
+    .text.slice(0, 20);
+
   return (
     <Link
       href={`/chat/${id}`}
-      className={`flex justify-around items-center my-3 p-3 rounded-md ${
-        active ? "bg-pink-200" : "customBg"
+      className={`flex justify-between items-center my-3 p-3 rounded-md ${
+        active ? "customBg" : "bg-[#F0F2F4]"
       }`}
     >
       <div className="flex items-center">
-        <ChatBubbleLeftIcon className="w-6 h-6 mr-1" />
-        <p></p>
+        <ChatBubbleOvalLeftEllipsisIcon className="w-6 h-6 mr-1" />
+
+        <p className="flex-1 hidden md:block">
+          {chatTitle ? chatTitle + "...." : "New Chat"}
+        </p>
       </div>
       <div>
         <TrashIcon

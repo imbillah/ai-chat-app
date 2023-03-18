@@ -6,7 +6,7 @@ import { useSession } from "next-auth/react";
 import React, { FormEvent, useState } from "react";
 import { toast } from "react-hot-toast";
 import { db } from "../../firebase/firebase";
-import Avatar from "../../public/assets/userAvatar.png";
+
 type Props = {
   chatId: string;
 };
@@ -14,7 +14,9 @@ const ChatInput = ({ chatId }: Props) => {
   const [userPrompt, setUserPrompt] = useState("");
   const { data: session } = useSession();
 
+  // model of ChatGPT response
   const model = "text-davinci-003";
+
   const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!userPrompt || "") return;
@@ -26,7 +28,9 @@ const ChatInput = ({ chatId }: Props) => {
       user: {
         _id: session?.user?.email!,
         name: session?.user?.name!,
-        avatar: session?.user?.image! || Avatar,
+        avatar:
+          session?.user?.image! ||
+          "https://i.postimg.cc/gJWWSXrw/user-Avatar.png",
       },
     };
     await addDoc(
@@ -57,7 +61,7 @@ const ChatInput = ({ chatId }: Props) => {
       });
   };
   return (
-    <div className="customBg rounded-lg">
+    <div className="bg-[#F0F2F4] rounded-lg">
       <form
         onSubmit={submitHandler}
         className="p-2  flex items-center justify-between"
@@ -73,7 +77,7 @@ const ChatInput = ({ chatId }: Props) => {
         <button
           type="submit"
           disabled={!userPrompt}
-          className="disabled:cursor-not-allowed px-3 py-3 bg-pink-100 rounded-full disabled:bg-red-300 font-semibold"
+          className="disabled:cursor-not-allowed px-3 py-3 bg-orange-300 rounded-full disabled:bg-gray-300 font-semibold"
         >
           <PaperAirplaneIcon className="w-6 h-6 -rotate-45" />
         </button>

@@ -3,7 +3,7 @@ import Info from "../components/homepageInfo/Info";
 
 const HomePage = () => {
   return (
-    <div className="flex justify-center customBg">
+    <div className="flex justify-center">
       <Info />
     </div>
   );
